@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext.tsx';
 import { useNotifications } from '../context/NotificationContext.tsx';
-import { UserRole } from '../types/index.ts';
 import {
   Bell,
   LogOut,
   Shield,
-  ChefHat,
-  CreditCard,
-  UserCheck,
-  Sparkles,
   CheckCheck
 } from 'lucide-react';
 
@@ -19,18 +14,10 @@ interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate }) => {
-  const { user, logout, switchRole, isLoading } = useAuth();
+  const { user, logout } = useAuth();
   const { notifications, unreadCount, markAsRead, markAllAsRead } = useNotifications();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
-
-  const rolePills: { role: UserRole; label: string; icon: any; color: string }[] = [
-    { role: 'admin', label: 'Admin', icon: Shield, color: 'bg-rose-500/10 text-rose-400 border-rose-500/30 hover:bg-rose-500/20' },
-    { role: 'manager', label: 'Manager', icon: Sparkles, color: 'bg-amber-500/10 text-amber-400 border-amber-500/30 hover:bg-amber-500/20' },
-    { role: 'cashier', label: 'Cashier', icon: CreditCard, color: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/20' },
-    { role: 'waiter', label: 'Waiter', icon: UserCheck, color: 'bg-blue-500/10 text-blue-400 border-blue-500/30 hover:bg-blue-500/20' },
-    { role: 'kitchen', label: 'Kitchen', icon: ChefHat, color: 'bg-purple-500/10 text-purple-400 border-purple-500/30 hover:bg-purple-500/20' },
-  ];
 
   return (
     <header className="h-16 border-b border-zinc-800 bg-zinc-950/80 backdrop-blur-md sticky top-0 z-30 flex items-center justify-between px-6">
@@ -42,30 +29,6 @@ export const Header: React.FC<HeaderProps> = ({ currentTab, onNavigate }) => {
         <span className="text-xs px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-400 font-mono hidden sm:inline-block">
           v2.4 Production
         </span>
-      </div>
-
-      {/* Role Switcher Pills (Fast Role Testing) */}
-      <div className="hidden lg:flex items-center gap-1.5 bg-zinc-900/80 p-1 rounded-xl border border-zinc-800">
-        <span className="text-xs text-zinc-400 px-2 font-medium">Switch Role:</span>
-        {rolePills.map(({ role, label, icon: Icon, color }) => {
-          const isActive = user?.role === role;
-          return (
-            <button
-              key={role}
-              onClick={() => switchRole(role)}
-              disabled={isLoading}
-              className={`flex items-center gap-1.5 px-3 py-1 rounded-lg text-xs font-medium border transition-all ${
-                isActive
-                  ? 'bg-amber-500 text-zinc-950 border-amber-400 shadow-sm font-semibold'
-                  : `${color} border-transparent`
-              }`}
-              title={`Switch role to ${label}`}
-            >
-              <Icon className="w-3.5 h-3.5" />
-              <span>{label}</span>
-            </button>
-          );
-        })}
       </div>
 
       {/* Right Controls: Notifications & Profile */}

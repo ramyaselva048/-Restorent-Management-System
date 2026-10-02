@@ -15,7 +15,6 @@ import {
   XCircle,
   Edit2,
   Trash2,
-  KeyRound,
   X
 } from 'lucide-react';
 
@@ -161,36 +160,6 @@ export const UsersPage: React.FC = () => {
             Add Staff Member
           </button>
         )}
-      </div>
-
-      {/* Demo Credentials Quick Guide */}
-      <div className="p-4 rounded-2xl bg-zinc-900 border border-zinc-800">
-        <div className="flex items-center gap-2 text-xs font-bold text-amber-400 mb-2">
-          <KeyRound className="w-4 h-4" />
-          Default Staff Credentials for Testing:
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 text-[11px] font-mono text-zinc-300">
-          <div className="p-2 rounded-lg bg-zinc-950 border border-zinc-800/80">
-            <span className="text-rose-400 font-bold block">Admin:</span>
-            admin@restoflow.com / admin123
-          </div>
-          <div className="p-2 rounded-lg bg-zinc-950 border border-zinc-800/80">
-            <span className="text-amber-400 font-bold block">Manager:</span>
-            manager@restoflow.com / manager123
-          </div>
-          <div className="p-2 rounded-lg bg-zinc-950 border border-zinc-800/80">
-            <span className="text-emerald-400 font-bold block">Cashier:</span>
-            cashier@restoflow.com / cashier123
-          </div>
-          <div className="p-2 rounded-lg bg-zinc-950 border border-zinc-800/80">
-            <span className="text-blue-400 font-bold block">Waiter:</span>
-            waiter@restoflow.com / waiter123
-          </div>
-          <div className="p-2 rounded-lg bg-zinc-950 border border-zinc-800/80">
-            <span className="text-purple-400 font-bold block">Kitchen Staff:</span>
-            chef@restoflow.com / kitchen123
-          </div>
-        </div>
       </div>
 
       {/* Staff List */}
