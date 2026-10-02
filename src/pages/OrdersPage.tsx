@@ -23,6 +23,7 @@ import {
   Receipt,
   UserCheck
 } from 'lucide-react';
+import { CreatableSelect } from '../components/CreatableSelect.tsx';
 
 interface OrdersPageProps {
   onNavigateToBilling?: () => void;
@@ -321,17 +322,18 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({ onNavigateToBilling }) =
                 <label className="block text-[11px] font-semibold text-zinc-400 mb-1">
                   Assign Dining Table
                 </label>
-                <select
+                <CreatableSelect
+                  options={tables.map(t => ({
+                    value: t.id,
+                    label: `${t.number} (${t.capacity} Seats - ${t.section})`,
+                    subLabel: `Status: ${t.status.toUpperCase()}`,
+                  }))}
                   value={selectedTableId}
-                  onChange={e => setSelectedTableId(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500 font-mono"
-                >
-                  {tables.map(t => (
-                    <option key={t.id} value={t.id}>
-                      {t.number} ({t.capacity} Seats - {t.section}) [{t.status.toUpperCase()}]
-                    </option>
-                  ))}
-                </select>
+                  onChange={val => setSelectedTableId(val)}
+                  allowCreate={false}
+                  placeholder="Search or pick dining table..."
+                  searchPlaceholder="Type table number or section..."
+                />
               </div>
             )}
 
@@ -403,19 +405,24 @@ export const OrdersPage: React.FC<OrdersPageProps> = ({ onNavigateToBilling }) =
 
             {/* Discounts & Calculations */}
             <div className="space-y-2 text-xs">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <span className="text-zinc-400">Order Discount</span>
-                <select
-                  value={discountPercent}
-                  onChange={e => setDiscountPercent(Number(e.target.value))}
-                  className="bg-zinc-950 border border-zinc-800 rounded-lg px-2 py-1 text-xs text-white"
-                >
-                  <option value="0">No Discount</option>
-                  <option value="5">5% VIP Discount</option>
-                  <option value="10">10% Staff / Promo</option>
-                  <option value="15">15% Special Event</option>
-                  <option value="20">20% Executive Discount</option>
-                </select>
+                <CreatableSelect
+                  className="w-44"
+                  options={[
+                    { value: '0', label: 'No Discount (0%)' },
+                    { value: '5', label: '5% VIP' },
+                    { value: '10', label: '10% Staff / Promo' },
+                    { value: '15', label: '15% Special Event' },
+                    { value: '20', label: '20% Executive' },
+                    { value: '25', label: '25% Special' },
+                  ]}
+                  value={String(discountPercent)}
+                  onChange={val => setDiscountPercent(Number(val) || 0)}
+                  placeholder="Select discount..."
+                  searchPlaceholder="Type discount %..."
+                  createLabelPrefix="Set discount %:"
+                />
               </div>
 
               <div className="pt-2 border-t border-zinc-800/80 space-y-1 text-zinc-400 text-[11px]">

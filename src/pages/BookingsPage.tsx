@@ -15,6 +15,7 @@ import {
   Download,
   X
 } from 'lucide-react';
+import { CreatableSelect } from '../components/CreatableSelect.tsx';
 
 export const BookingsPage: React.FC = () => {
   const { success, error } = useToast();
@@ -207,17 +208,20 @@ export const BookingsPage: React.FC = () => {
 
         {/* Status Filter */}
         <div>
-          <select
+          <CreatableSelect
+            options={[
+              { value: 'all', label: 'All Reservation Statuses' },
+              { value: 'confirmed', label: 'Confirmed' },
+              { value: 'seated', label: 'Seated' },
+              { value: 'completed', label: 'Completed' },
+              { value: 'cancelled', label: 'Cancelled' },
+            ]}
             value={selectedStatus}
-            onChange={e => setSelectedStatus(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500 capitalize"
-          >
-            <option value="all">All Reservation Statuses</option>
-            <option value="confirmed">Confirmed</option>
-            <option value="seated">Seated</option>
-            <option value="completed">Completed</option>
-            <option value="cancelled">Cancelled</option>
-          </select>
+            onChange={val => setSelectedStatus(val)}
+            allowCreate={false}
+            placeholder="Filter reservation status..."
+            searchPlaceholder="Search status..."
+          />
         </div>
       </div>
 
@@ -409,17 +413,19 @@ export const BookingsPage: React.FC = () => {
                   <label className="block text-xs font-semibold text-zinc-300 mb-1">
                     Select Table *
                   </label>
-                  <select
+                  <CreatableSelect
+                    options={tables.map(t => ({
+                      value: t.id,
+                      label: `${t.number} (${t.capacity}p - ${t.section})`,
+                      subLabel: `Status: ${t.status.toUpperCase()}`,
+                    }))}
                     value={tableId}
-                    onChange={e => setTableId(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500 font-mono"
-                  >
-                    {tables.map(t => (
-                      <option key={t.id} value={t.id}>
-                        {t.number} ({t.capacity}p - {t.section})
-                      </option>
-                    ))}
-                  </select>
+                    onChange={val => setTableId(val)}
+                    allowCreate={false}
+                    placeholder="Search or pick table..."
+                    searchPlaceholder="Type table number..."
+                    required
+                  />
                 </div>
 
                 <div>
@@ -441,16 +447,21 @@ export const BookingsPage: React.FC = () => {
                   <label className="block text-xs font-semibold text-zinc-300 mb-1">
                     Duration
                   </label>
-                  <select
-                    value={durationMinutes}
-                    onChange={e => setDurationMinutes(Number(e.target.value))}
-                    className="w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500"
-                  >
-                    <option value="60">60 mins (1 hr)</option>
-                    <option value="90">90 mins (1.5 hrs)</option>
-                    <option value="120">120 mins (2 hrs)</option>
-                    <option value="180">180 mins (3 hrs)</option>
-                  </select>
+                  <CreatableSelect
+                    options={[
+                      { value: '45', label: '45 mins' },
+                      { value: '60', label: '60 mins (1 hr)' },
+                      { value: '90', label: '90 mins (1.5 hrs)' },
+                      { value: '120', label: '120 mins (2 hrs)' },
+                      { value: '180', label: '180 mins (3 hrs)' },
+                      { value: '240', label: '240 mins (4 hrs)' },
+                    ]}
+                    value={String(durationMinutes)}
+                    onChange={val => setDurationMinutes(Number(val) || 90)}
+                    placeholder="Select duration..."
+                    searchPlaceholder="Type duration in mins..."
+                    createLabelPrefix="Set duration (mins):"
+                  />
                 </div>
               </div>
 

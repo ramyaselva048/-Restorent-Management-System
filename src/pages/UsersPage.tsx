@@ -17,6 +17,7 @@ import {
   Trash2,
   X
 } from 'lucide-react';
+import { CreatableSelect } from '../components/CreatableSelect.tsx';
 
 export const UsersPage: React.FC = () => {
   const { user: currentUser, hasRole } = useAuth();
@@ -317,17 +318,21 @@ export const UsersPage: React.FC = () => {
                   <label className="block text-xs font-semibold text-zinc-300 mb-1">
                     System Role *
                   </label>
-                  <select
+                  <CreatableSelect
+                    options={[
+                      { value: 'admin', label: 'Admin (Full Access)' },
+                      { value: 'manager', label: 'Manager (Operations)' },
+                      { value: 'cashier', label: 'Cashier (Billing & POS)' },
+                      { value: 'waiter', label: 'Waiter (Tables & Orders)' },
+                      { value: 'kitchen', label: 'Kitchen (KDS Ticket)' },
+                    ]}
                     value={role}
-                    onChange={e => setRole(e.target.value as UserRole)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500 uppercase font-semibold"
-                  >
-                    <option value="admin">Admin</option>
-                    <option value="manager">Manager</option>
-                    <option value="cashier">Cashier</option>
-                    <option value="waiter">Waiter</option>
-                    <option value="kitchen">Kitchen Staff</option>
-                  </select>
+                    onChange={val => setRole(val as UserRole)}
+                    allowCreate={false}
+                    placeholder="Select role..."
+                    searchPlaceholder="Search role..."
+                    required
+                  />
                 </div>
 
                 <div>

@@ -15,6 +15,7 @@ import {
   Trash2,
   X
 } from 'lucide-react';
+import { CreatableSelect } from '../components/CreatableSelect.tsx';
 
 export const MenuPage: React.FC = () => {
   const { hasRole } = useAuth();
@@ -43,6 +44,30 @@ export const MenuPage: React.FC = () => {
   const [calories, setCalories] = useState('450');
   const [spicyLevel, setSpicyLevel] = useState('0');
   const [submitting, setSubmitting] = useState(false);
+
+  const handleCreateCategory = async (catName: string) => {
+    try {
+      const newCat = await api.menu.createCategory(catName);
+      setCategories(prev => {
+        if (prev.some(c => c.id === newCat.id)) return prev;
+        return [...prev, newCat];
+      });
+      setCategoryId(newCat.id);
+      success(`Category "${catName}" created!`);
+      return newCat.id;
+    } catch {
+      const localId = `cat-${Date.now()}`;
+      const fallbackCat: MenuCategory = {
+        id: localId,
+        name: catName,
+        displayOrder: categories.length + 1
+      };
+      setCategories(prev => [...prev, fallbackCat]);
+      setCategoryId(localId);
+      success(`Category "${catName}" added!`);
+      return localId;
+    }
+  };
 
   useEffect(() => {
     loadData();
@@ -234,16 +259,19 @@ export const MenuPage: React.FC = () => {
         </div>
 
         <div>
-          <select
+          <CreatableSelect
+            options={[
+              { value: 'all', label: 'All Dietary Preferences' },
+              { value: 'veg', label: 'Vegetarian' },
+              { value: 'non-veg', label: 'Non-Vegetarian' },
+              { value: 'vegan', label: 'Vegan Only' },
+            ]}
             value={dietaryFilter}
-            onChange={e => setDietaryFilter(e.target.value)}
-            className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500 capitalize"
-          >
-            <option value="all">All Dietary Preferences</option>
-            <option value="veg">Vegetarian</option>
-            <option value="non-veg">Non-Vegetarian</option>
-            <option value="vegan">Vegan Only</option>
-          </select>
+            onChange={val => setDietaryFilter(val)}
+            allowCreate={false}
+            placeholder="Filter by dietary..."
+            searchPlaceholder="Search dietary..."
+          />
         </div>
       </div>
 
@@ -389,18 +417,16 @@ export const MenuPage: React.FC = () => {
                   <label className="block text-xs font-semibold text-zinc-300 mb-1">
                     Category *
                   </label>
-                  <select
+                  <CreatableSelect
+                    options={categories.map(c => ({ value: c.id, label: c.name }))}
                     value={categoryId}
-                    onChange={e => setCategoryId(e.target.value)}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500"
+                    onChange={val => setCategoryId(val)}
+                    onCreate={handleCreateCategory}
+                    placeholder="Select or type new category..."
+                    searchPlaceholder="Type to search or create category..."
+                    createLabelPrefix="Create category:"
                     required
-                  >
-                    {categories.map(c => (
-                      <option key={c.id} value={c.id}>
-                        {c.name}
-                      </option>
-                    ))}
-                  </select>
+                  />
                 </div>
 
                 <div>
@@ -450,15 +476,21 @@ export const MenuPage: React.FC = () => {
                   <label className="block text-xs font-semibold text-zinc-300 mb-1">
                     Dietary
                   </label>
-                  <select
+                  <CreatableSelect
+                    options={[
+                      { value: 'veg', label: 'Vegetarian' },
+                      { value: 'non-veg', label: 'Non-Vegetarian' },
+                      { value: 'vegan', label: 'Vegan' },
+                      { value: 'gluten-free', label: 'Gluten-Free' },
+                      { value: 'halal', label: 'Halal' },
+                      { value: 'keto', label: 'Keto' },
+                    ]}
                     value={dietary}
-                    onChange={e => setDietary(e.target.value as DietaryType)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500"
-                  >
-                    <option value="veg">Vegetarian</option>
-                    <option value="non-veg">Non-Vegetarian</option>
-                    <option value="vegan">Vegan</option>
-                  </select>
+                    onChange={val => setDietary(val as DietaryType)}
+                    placeholder="Select or type dietary..."
+                    searchPlaceholder="Type dietary or add new..."
+                    createLabelPrefix="Add dietary:"
+                  />
                 </div>
 
                 <div>
@@ -478,16 +510,20 @@ export const MenuPage: React.FC = () => {
                   <label className="block text-xs font-semibold text-zinc-300 mb-1">
                     Spiciness Level
                   </label>
-                  <select
+                  <CreatableSelect
+                    options={[
+                      { value: '0', label: 'Mild / None' },
+                      { value: '1', label: 'Level 1 (Gentle)' },
+                      { value: '2', label: 'Level 2 (Medium)' },
+                      { value: '3', label: 'Level 3 (Fiery)' },
+                      { value: '4', label: 'Level 4 (Extra Hot 🔥)' },
+                    ]}
                     value={spicyLevel}
-                    onChange={e => setSpicyLevel(e.target.value)}
-                    className="w-full px-3 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500"
-                  >
-                    <option value="0">Mild / None</option>
-                    <option value="1">Level 1 (Gentle)</option>
-                    <option value="2">Level 2 (Medium)</option>
-                    <option value="3">Level 3 (Fiery)</option>
-                  </select>
+                    onChange={val => setSpicyLevel(val)}
+                    placeholder="Select spiciness..."
+                    searchPlaceholder="Type spiciness or add new..."
+                    createLabelPrefix="Add level:"
+                  />
                 </div>
               </div>
 

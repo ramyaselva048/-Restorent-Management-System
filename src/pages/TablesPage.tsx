@@ -13,6 +13,7 @@ import {
   Trash2,
   X
 } from 'lucide-react';
+import { CreatableSelect } from '../components/CreatableSelect.tsx';
 
 interface TablesPageProps {
   onSelectTableForOrder?: (tableId: string) => void;
@@ -288,33 +289,43 @@ export const TablesPage: React.FC<TablesPageProps> = ({ onSelectTableForOrder, o
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">
                   Guest Capacity (Seats)
                 </label>
-                <select
+                <CreatableSelect
+                  options={[
+                    { value: '2', label: '2 Guests (Couple)' },
+                    { value: '4', label: '4 Guests (Standard)' },
+                    { value: '6', label: '6 Guests (Family)' },
+                    { value: '8', label: '8 Guests (Large Group)' },
+                    { value: '10', label: '10 Guests (VIP Banquet)' },
+                    { value: '12', label: '12 Guests' },
+                  ]}
                   value={newCapacity}
-                  onChange={e => setNewCapacity(e.target.value)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500"
-                >
-                  <option value="2">2 Guests (Couple)</option>
-                  <option value="4">4 Guests (Standard)</option>
-                  <option value="6">6 Guests (Family)</option>
-                  <option value="8">8 Guests (Large Group)</option>
-                  <option value="10">10+ Guests (VIP Banquet)</option>
-                </select>
+                  onChange={val => setNewCapacity(val)}
+                  placeholder="Select or type capacity..."
+                  searchPlaceholder="Type capacity or number..."
+                  createLabelPrefix="Set capacity to"
+                />
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">
                   Dining Section
                 </label>
-                <select
+                <CreatableSelect
+                  options={Array.from(new Set([
+                    'Main Dining',
+                    'Patio Garden',
+                    'Rooftop Lounge',
+                    'VIP Room',
+                    'Bar Counter',
+                    'Terrace',
+                    ...tables.map(t => t.section)
+                  ])).map(sec => ({ value: sec, label: sec }))}
                   value={newSection}
-                  onChange={e => setNewSection(e.target.value as TableSection)}
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-white text-xs focus:outline-none focus:border-amber-500"
-                >
-                  <option value="Main Dining">Main Dining</option>
-                  <option value="Patio Garden">Patio Garden</option>
-                  <option value="Rooftop Lounge">Rooftop Lounge</option>
-                  <option value="VIP Room">VIP Room</option>
-                </select>
+                  onChange={val => setNewSection(val as TableSection)}
+                  placeholder="Select or type section..."
+                  searchPlaceholder="Search or type new section..."
+                  createLabelPrefix="Add Section:"
+                />
               </div>
 
               <div className="pt-2 flex items-center justify-end gap-2.5">
