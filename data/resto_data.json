@@ -2,10 +2,10 @@
   "users": [
     {
       "id": "u-1",
-      "name": "Alexander Wright",
+      "name": "Ramya S",
       "email": "admin@restoflow.com",
       "role": "admin",
-      "phone": "+1 (555) 234-5678",
+      "phone": "+918825641424",
       "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80",
       "isActive": true,
       "createdAt": "2026-01-10T08:00:00.000Z",
@@ -67,10 +67,9 @@
       "number": "T-01",
       "capacity": 2,
       "section": "Main Dining",
-      "status": "occupied",
-      "currentOrderId": "ord-101",
-      "assignedWaiter": "Sofia Morales",
-      "updatedAt": "2026-10-02T05:24:54.632Z"
+      "status": "cleaning",
+      "assignedWaiter": "Alexander Wright",
+      "updatedAt": "2026-10-02T05:31:11.826Z"
     },
     {
       "id": "t-2",
@@ -93,10 +92,9 @@
       "number": "T-04",
       "capacity": 6,
       "section": "Main Dining",
-      "status": "occupied",
-      "currentOrderId": "ord-102",
+      "status": "cleaning",
       "assignedWaiter": "Sofia Morales",
-      "updatedAt": "2026-10-02T05:24:54.632Z"
+      "updatedAt": "2026-10-02T05:33:27.851Z"
     },
     {
       "id": "t-5",
@@ -145,6 +143,40 @@
       "section": "VIP Room",
       "status": "available",
       "updatedAt": "2026-10-02T05:24:54.632Z"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "bk-1",
+      "bookingCode": "BK-7801",
+      "customerName": "Victoria Sterling",
+      "customerPhone": "+1 (555) 789-0123",
+      "customerEmail": "victoria.sterling@example.com",
+      "tableId": "t-3",
+      "tableNumber": "T-03",
+      "guestCount": 4,
+      "bookingDate": "2026-10-02",
+      "bookingTime": "19:30",
+      "durationMinutes": 90,
+      "specialRequests": "Anniversary celebration. Complimentary champagne glass requested.",
+      "status": "confirmed",
+      "createdAt": "2026-10-02T05:24:54.632Z"
+    },
+    {
+      "id": "bk-2",
+      "bookingCode": "BK-7802",
+      "customerName": "Harrison Davis",
+      "customerPhone": "+1 (555) 654-3210",
+      "customerEmail": "hdavis@corpgroup.com",
+      "tableId": "t-9",
+      "tableNumber": "T-09",
+      "guestCount": 8,
+      "bookingDate": "2026-10-02",
+      "bookingTime": "20:00",
+      "durationMinutes": 120,
+      "specialRequests": "Executive client business dinner. Need quiet corner.",
+      "status": "confirmed",
+      "createdAt": "2026-10-02T05:24:54.632Z"
     }
   ],
   "categories": [
@@ -346,85 +378,45 @@
       "createdAt": "2026-10-02T05:24:54.632Z"
     }
   ],
-  "customers": [
-    {
-      "id": "c-1",
-      "name": "Victoria Sterling",
-      "phone": "+1 (555) 789-0123",
-      "email": "victoria.sterling@example.com",
-      "address": "450 Lexington Ave, New York, NY",
-      "totalVisits": 14,
-      "totalSpend": 1840.5,
-      "loyaltyPoints": 360,
-      "isVIP": true,
-      "notes": "Prefers Table T-04 or Rooftop. Allergic to peanuts.",
-      "createdAt": "2026-01-05T14:30:00.000Z",
-      "lastVisitAt": "2026-10-02T05:24:54.632Z"
-    },
-    {
-      "id": "c-2",
-      "name": "Jonathan Hayes",
-      "phone": "+1 (555) 890-1234",
-      "email": "j.hayes@example.com",
-      "address": "128 Willow Creek Rd, Suite 4B",
-      "totalVisits": 6,
-      "totalSpend": 620,
-      "loyaltyPoints": 120,
-      "isVIP": false,
-      "notes": "Enjoys steak rare and pairing with full-bodied reds.",
-      "createdAt": "2026-02-14T18:00:00.000Z",
-      "lastVisitAt": "2026-03-25T19:30:00.000Z"
-    },
-    {
-      "id": "c-3",
-      "name": "Aisha Al-Mansoor",
-      "phone": "+1 (555) 901-2345",
-      "email": "aisha.m@example.com",
-      "address": "88 Grand Promenade",
-      "totalVisits": 9,
-      "totalSpend": 1250,
-      "loyaltyPoints": 250,
-      "isVIP": true,
-      "notes": "Strictly Halal / Vegetarian preferences. High tipper.",
-      "createdAt": "2026-01-20T12:00:00.000Z",
-      "lastVisitAt": "2026-03-28T20:15:00.000Z"
-    }
-  ],
-  "bookings": [
-    {
-      "id": "bk-1",
-      "bookingCode": "BK-7801",
-      "customerName": "Victoria Sterling",
-      "customerPhone": "+1 (555) 789-0123",
-      "customerEmail": "victoria.sterling@example.com",
-      "tableId": "t-3",
-      "tableNumber": "T-03",
-      "guestCount": 4,
-      "bookingDate": "2026-10-02",
-      "bookingTime": "19:30",
-      "durationMinutes": 90,
-      "specialRequests": "Anniversary celebration. Complimentary champagne glass requested.",
-      "status": "confirmed",
-      "createdAt": "2026-10-02T05:24:54.632Z"
-    },
-    {
-      "id": "bk-2",
-      "bookingCode": "BK-7802",
-      "customerName": "Harrison Davis",
-      "customerPhone": "+1 (555) 654-3210",
-      "customerEmail": "hdavis@corpgroup.com",
-      "tableId": "t-9",
-      "tableNumber": "T-09",
-      "guestCount": 8,
-      "bookingDate": "2026-10-02",
-      "bookingTime": "20:00",
-      "durationMinutes": 120,
-      "specialRequests": "Executive client business dinner. Need quiet corner.",
-      "status": "confirmed",
-      "createdAt": "2026-10-02T05:24:54.632Z"
-    }
-  ],
   "orders": [
+    {
+      "id": "ord-1790919012703",
+      "orderNumber": "ORD-1419",
+      "orderType": "dine-in",
+      "tableId": "t-1",
+      "tableNumber": "T-01",
+      "customerName": "Guests at T-01",
+      "waiterId": "u-1",
+      "waiterName": "Alexander Wright",
+      "items": [
+        {
+          "id": "oi-1790919012703-0",
+          "menuItemId": "item-7",
+          "name": "Tagliolini al Tartufo",
+          "price": 29,
+          "quantity": 1,
+          "dietary": "veg"
+        },
+        {
+          "id": "oi-1790919012703-1",
+          "menuItemId": "item-8",
+          "name": "Classic Venetian Tiramisù",
+          "price": 13.5,
+          "quantity": 1,
+          "dietary": "veg"
+        }
+      ],
+      "subtotal": 42.5,
+      "taxAmount": 2.13,
+      "discountAmount": 0,
+      "serviceCharge": 4.25,
+      "totalAmount": 48.88,
+      "status": "completed",
+      "paymentStatus": "paid",
+      "notes": "",
+      "createdAt": "2026-10-02T05:30:12.703Z",
+      "updatedAt": "2026-10-02T05:31:11.826Z"
+    },
     {
       "id": "ord-101",
       "orderNumber": "ORD-1001",
@@ -522,14 +514,155 @@
       "discountAmount": 10,
       "serviceCharge": 11,
       "totalAmount": 116.5,
-      "status": "new",
-      "paymentStatus": "unpaid",
+      "status": "completed",
+      "paymentStatus": "paid",
       "notes": "Separate sauces for calamari.",
       "createdAt": "2026-10-02T05:17:54.638Z",
-      "updatedAt": "2026-10-02T05:24:54.632Z"
+      "updatedAt": "2026-10-02T05:33:27.851Z"
     }
   ],
   "bills": [
+    {
+      "id": "bill-1790919206271",
+      "billNumber": "INV-2026-5341",
+      "orderId": "ord-102",
+      "orderNumber": "ORD-1002",
+      "tableNumber": "T-04",
+      "customerName": "Jonathan Hayes",
+      "customerPhone": "+1 (555) 890-1234",
+      "items": [
+        {
+          "id": "oi-4",
+          "menuItemId": "item-2",
+          "name": "Crispy Calamari Fritti",
+          "price": 18,
+          "quantity": 2,
+          "dietary": "non-veg"
+        },
+        {
+          "id": "oi-5",
+          "menuItemId": "item-6",
+          "name": "Diavola Wood-Fired Pizza",
+          "price": 24,
+          "quantity": 1,
+          "dietary": "non-veg"
+        },
+        {
+          "id": "oi-6",
+          "menuItemId": "item-7",
+          "name": "Tagliolini al Tartufo",
+          "price": 29,
+          "quantity": 1,
+          "dietary": "veg"
+        },
+        {
+          "id": "oi-7",
+          "menuItemId": "item-11",
+          "name": "Yuzu Botanical Mocktail",
+          "price": 10.5,
+          "quantity": 2
+        }
+      ],
+      "subtotal": 110,
+      "taxAmount": 5,
+      "discountAmount": 10,
+      "discountReason": "",
+      "serviceCharge": 10,
+      "totalAmount": 115,
+      "paymentStatus": "paid",
+      "cashierName": "Alexander Wright",
+      "createdAt": "2026-10-02T05:33:26.271Z",
+      "paymentMethod": "credit_card",
+      "paidAt": "2026-10-02T05:33:27.851Z"
+    },
+    {
+      "id": "bill-1790919068148",
+      "billNumber": "INV-2026-9642",
+      "orderId": "ord-1790919012703",
+      "orderNumber": "ORD-1419",
+      "tableNumber": "T-01",
+      "customerName": "Guests at T-01",
+      "items": [
+        {
+          "id": "oi-1790919012703-0",
+          "menuItemId": "item-7",
+          "name": "Tagliolini al Tartufo",
+          "price": 29,
+          "quantity": 1,
+          "dietary": "veg"
+        },
+        {
+          "id": "oi-1790919012703-1",
+          "menuItemId": "item-8",
+          "name": "Classic Venetian Tiramisù",
+          "price": 13.5,
+          "quantity": 1,
+          "dietary": "veg"
+        }
+      ],
+      "subtotal": 42.5,
+      "taxAmount": 2.13,
+      "discountAmount": 0,
+      "discountReason": "",
+      "serviceCharge": 4.25,
+      "totalAmount": 48.88,
+      "paymentStatus": "paid",
+      "cashierName": "Alexander Wright",
+      "createdAt": "2026-10-02T05:31:08.148Z",
+      "paymentMethod": "credit_card",
+      "paidAt": "2026-10-02T05:31:11.826Z"
+    },
+    {
+      "id": "bill-1790918922686",
+      "billNumber": "INV-2026-8984",
+      "orderId": "ord-102",
+      "orderNumber": "ORD-1002",
+      "tableNumber": "T-04",
+      "customerName": "Jonathan Hayes",
+      "customerPhone": "+1 (555) 890-1234",
+      "items": [
+        {
+          "id": "oi-4",
+          "menuItemId": "item-2",
+          "name": "Crispy Calamari Fritti",
+          "price": 18,
+          "quantity": 2,
+          "dietary": "non-veg"
+        },
+        {
+          "id": "oi-5",
+          "menuItemId": "item-6",
+          "name": "Diavola Wood-Fired Pizza",
+          "price": 24,
+          "quantity": 1,
+          "dietary": "non-veg"
+        },
+        {
+          "id": "oi-6",
+          "menuItemId": "item-7",
+          "name": "Tagliolini al Tartufo",
+          "price": 29,
+          "quantity": 1,
+          "dietary": "veg"
+        },
+        {
+          "id": "oi-7",
+          "menuItemId": "item-11",
+          "name": "Yuzu Botanical Mocktail",
+          "price": 10.5,
+          "quantity": 2
+        }
+      ],
+      "subtotal": 110,
+      "taxAmount": 5,
+      "discountAmount": 10,
+      "discountReason": "",
+      "serviceCharge": 10,
+      "totalAmount": 115,
+      "paymentStatus": "pending",
+      "cashierName": "Alexander Wright",
+      "createdAt": "2026-10-02T05:28:42.686Z"
+    },
     {
       "id": "bill-99",
       "billNumber": "INV-2026-0099",
@@ -569,7 +702,113 @@
       "createdAt": "2026-10-02T04:34:54.638Z"
     }
   ],
+  "customers": [
+    {
+      "id": "c-1",
+      "name": "Victoria Sterling",
+      "phone": "+1 (555) 789-0123",
+      "email": "victoria.sterling@example.com",
+      "address": "450 Lexington Ave, New York, NY",
+      "totalVisits": 14,
+      "totalSpend": 1840.5,
+      "loyaltyPoints": 360,
+      "isVIP": true,
+      "notes": "Prefers Table T-04 or Rooftop. Allergic to peanuts.",
+      "createdAt": "2026-01-05T14:30:00.000Z",
+      "lastVisitAt": "2026-10-02T05:24:54.632Z"
+    },
+    {
+      "id": "c-2",
+      "name": "Jonathan Hayes",
+      "phone": "+1 (555) 890-1234",
+      "email": "j.hayes@example.com",
+      "address": "128 Willow Creek Rd, Suite 4B",
+      "totalVisits": 6,
+      "totalSpend": 735,
+      "loyaltyPoints": 131,
+      "isVIP": false,
+      "notes": "Enjoys steak rare and pairing with full-bodied reds.",
+      "createdAt": "2026-02-14T18:00:00.000Z",
+      "lastVisitAt": "2026-03-25T19:30:00.000Z"
+    },
+    {
+      "id": "c-3",
+      "name": "Aisha Al-Mansoor",
+      "phone": "+1 (555) 901-2345",
+      "email": "aisha.m@example.com",
+      "address": "88 Grand Promenade",
+      "totalVisits": 9,
+      "totalSpend": 1250,
+      "loyaltyPoints": 250,
+      "isVIP": true,
+      "notes": "Strictly Halal / Vegetarian preferences. High tipper.",
+      "createdAt": "2026-01-20T12:00:00.000Z",
+      "lastVisitAt": "2026-03-28T20:15:00.000Z"
+    },
+    {
+      "id": "c-1790920941292",
+      "name": "Iswarya S",
+      "phone": "+918825641424",
+      "email": "iswaryai078@gmail.com",
+      "address": "",
+      "totalVisits": 0,
+      "totalSpend": 0,
+      "loyaltyPoints": 50,
+      "isVIP": true,
+      "notes": "Prefers corners both",
+      "createdAt": "2026-10-02T06:02:21.292Z"
+    },
+    {
+      "id": "c-1790921077665",
+      "name": "Iswarya S",
+      "phone": "+91 9876543233",
+      "email": "iswaryai078@gmail.com",
+      "address": "",
+      "totalVisits": 0,
+      "totalSpend": 0,
+      "loyaltyPoints": 50,
+      "isVIP": true,
+      "notes": "Prefers corners both",
+      "createdAt": "2026-10-02T06:04:37.665Z"
+    }
+  ],
   "notifications": [
+    {
+      "id": "notif-1790919207852-300",
+      "type": "payment",
+      "title": "Payment Settled",
+      "message": "Invoice INV-2026-5341 paid ($115 via CREDIT CARD)",
+      "isRead": false,
+      "relatedId": "bill-1790919206271",
+      "createdAt": "2026-10-02T05:33:27.852Z"
+    },
+    {
+      "id": "notif-1790919071826-795",
+      "type": "payment",
+      "title": "Payment Settled",
+      "message": "Invoice INV-2026-9642 paid ($48.88 via CREDIT CARD)",
+      "isRead": false,
+      "relatedId": "bill-1790919068148",
+      "createdAt": "2026-10-02T05:31:11.826Z"
+    },
+    {
+      "id": "notif-1790919031629-578",
+      "type": "order",
+      "title": "Order Ready to Serve",
+      "message": "Order ORD-1419 for Table T-01 is ready!",
+      "isRead": false,
+      "relatedId": "ord-1790919012703",
+      "createdAt": "2026-10-02T05:30:31.629Z"
+    },
+    {
+      "id": "notif-1790919012703-69",
+      "type": "kitchen",
+      "title": "New Order for Kitchen",
+      "message": "Order ORD-1419 placed for T-01 (2 items)",
+      "isRead": false,
+      "relatedId": "ord-1790919012703",
+      "createdAt": "2026-10-02T05:30:12.703Z"
+    },
     {
       "id": "notif-1",
       "type": "booking",
@@ -599,6 +838,248 @@
     }
   ],
   "auditLogs": [
+    {
+      "id": "log-1790922409679-190",
+      "userId": "u-1",
+      "userName": "Ramya S",
+      "userRole": "admin",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in successfully from IP 127.0.0.1",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T06:26:49.679Z"
+    },
+    {
+      "id": "log-1790921077666-893",
+      "userId": "u-1",
+      "userName": "Ramya S",
+      "userRole": "admin",
+      "action": "CREATE_CUSTOMER",
+      "module": "Customers",
+      "details": "Registered customer Iswarya S (+91 9876543233)",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T06:04:37.666Z"
+    },
+    {
+      "id": "log-1790920941295-144",
+      "userId": "u-1",
+      "userName": "Ramya S",
+      "userRole": "admin",
+      "action": "CREATE_CUSTOMER",
+      "module": "Customers",
+      "details": "Registered customer Iswarya S (+918825641424)",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T06:02:21.295Z"
+    },
+    {
+      "id": "log-1790919698894-258",
+      "userId": "u-1",
+      "userName": "Ramya S",
+      "userRole": "admin",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in successfully from IP 127.0.0.1",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:41:38.894Z"
+    },
+    {
+      "id": "log-1790919667223-258",
+      "userId": "u-1",
+      "userName": "Ramya S",
+      "userRole": "admin",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to admin",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:41:07.223Z"
+    },
+    {
+      "id": "log-1790919459236-405",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "UPDATE_USER",
+      "module": "Users",
+      "details": "Updated user details for Ramya S",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:37:39.236Z"
+    },
+    {
+      "id": "log-1790919427388-24",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "USER_LOGIN",
+      "module": "Authentication",
+      "details": "User logged in successfully from IP 127.0.0.1",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:37:07.388Z"
+    },
+    {
+      "id": "log-1790919352160-331",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to admin",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:35:52.160Z"
+    },
+    {
+      "id": "log-1790919323585-847",
+      "userId": "u-5",
+      "userName": "Chef Marco Bellini",
+      "userRole": "kitchen",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to kitchen",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:35:23.585Z"
+    },
+    {
+      "id": "log-1790919312826-734",
+      "userId": "u-4",
+      "userName": "Sofia Morales",
+      "userRole": "waiter",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to waiter",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:35:12.826Z"
+    },
+    {
+      "id": "log-1790919295662-458",
+      "userId": "u-3",
+      "userName": "Marcus Vance",
+      "userRole": "cashier",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to cashier",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:34:55.662Z"
+    },
+    {
+      "id": "log-1790919282225-798",
+      "userId": "u-2",
+      "userName": "Elena Rostova",
+      "userRole": "manager",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to manager",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:34:42.225Z"
+    },
+    {
+      "id": "log-1790919207852-54",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "SETTLE_PAYMENT",
+      "module": "Billing",
+      "details": "Settled bill INV-2026-5341 ($115) via credit_card",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:33:27.852Z"
+    },
+    {
+      "id": "log-1790919206272-146",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "GENERATE_BILL",
+      "module": "Billing",
+      "details": "Generated invoice INV-2026-5341 for ORD-1002 ($115)",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:33:26.272Z"
+    },
+    {
+      "id": "log-1790919071827-492",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "SETTLE_PAYMENT",
+      "module": "Billing",
+      "details": "Settled bill INV-2026-9642 ($48.88) via credit_card",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:31:11.827Z"
+    },
+    {
+      "id": "log-1790919068149-760",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "GENERATE_BILL",
+      "module": "Billing",
+      "details": "Generated invoice INV-2026-9642 for ORD-1419 ($48.88)",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:31:08.149Z"
+    },
+    {
+      "id": "log-1790919035431-918",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "UPDATE_ORDER_STATUS",
+      "module": "Orders",
+      "details": "Updated order ORD-1419 status to SERVED",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:30:35.431Z"
+    },
+    {
+      "id": "log-1790919031629-798",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "UPDATE_ORDER_STATUS",
+      "module": "Orders",
+      "details": "Updated order ORD-1419 status to READY",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:30:31.629Z"
+    },
+    {
+      "id": "log-1790919025837-31",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "UPDATE_ORDER_STATUS",
+      "module": "Orders",
+      "details": "Updated order ORD-1419 status to PREPARING",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:30:25.837Z"
+    },
+    {
+      "id": "log-1790919012704-544",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "CREATE_ORDER",
+      "module": "Orders",
+      "details": "Created dine-in order ORD-1419 totaling $48.88",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:30:12.704Z"
+    },
+    {
+      "id": "log-1790918922686-10",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "GENERATE_BILL",
+      "module": "Billing",
+      "details": "Generated invoice INV-2026-8984 for ORD-1002 ($115)",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:28:42.686Z"
+    },
+    {
+      "id": "log-1790918729719-532",
+      "userId": "u-1",
+      "userName": "Alexander Wright",
+      "userRole": "admin",
+      "action": "ROLE_SWITCH",
+      "module": "Authentication",
+      "details": "Switched demo role to admin",
+      "ipAddress": "127.0.0.1",
+      "timestamp": "2026-10-02T05:25:29.719Z"
+    },
     {
       "id": "log-1790918700888-310",
       "userId": "u-1",

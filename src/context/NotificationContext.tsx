@@ -21,9 +21,11 @@ export const NotificationProvider: React.FC<{ children: React.ReactNode }> = ({ 
     if (!user) return;
     try {
       const data = await api.notifications.getAll();
-      setNotifications(data);
-    } catch (err) {
-      console.error('Failed to fetch notifications', err);
+      if (Array.isArray(data)) {
+        setNotifications(data);
+      }
+    } catch {
+      // Gracefully handle polling retry
     }
   }, [user]);
 

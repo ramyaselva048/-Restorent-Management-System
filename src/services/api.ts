@@ -50,10 +50,15 @@ async function request<T>(endpoint: string, options: RequestInit = {}): Promise<
     headers['Authorization'] = `Bearer ${token}`;
   }
 
-  const res = await fetch(`/api${endpoint}`, {
-    ...options,
-    headers,
-  });
+  let res: Response;
+  try {
+    res = await fetch(`/api${endpoint}`, {
+      ...options,
+      headers,
+    });
+  } catch (err: any) {
+    throw new Error(err?.message || 'Network request failed. Please check server connection.');
+  }
 
   if (!res.ok) {
     let errorMsg = 'An error occurred';
@@ -216,7 +221,15 @@ export const api = {
 
   // Notifications
   notifications: {
-    getAll: () => request<Notification[]>('/notifications'),
+    getAll: async () => {
+      const token = getToken();
+      if (!token) return [];
+      try {
+        return await request<Notification[]>('/notifications');
+      } catch {
+        return [];
+      }
+    },
     markRead: (id: string) =>
       request<{ success: boolean }>(`/notifications/${id}/read`, { method: 'PATCH' }),
     markAllRead: () =>

@@ -25,9 +25,11 @@ export const KitchenPage: React.FC = () => {
   const loadOrders = async () => {
     try {
       const data = await api.kitchen.getOrders();
-      setOrders(data);
-    } catch (err: any) {
-      console.error('KDS error', err);
+      if (Array.isArray(data)) {
+        setOrders(data);
+      }
+    } catch {
+      // Gracefully retry on next interval
     } finally {
       setLoading(false);
     }
