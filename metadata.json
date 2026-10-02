@@ -1,0 +1,6 @@
+{
+  "name": "RestoFlow - Restaurant Management System",
+  "description": "Enterprise-grade Restaurant Management System featuring Table Booking, Menu POS, Kitchen Display, Billing, Customers, Analytics, and Role-Based Access Control.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
